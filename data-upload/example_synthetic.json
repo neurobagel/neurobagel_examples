@@ -19,45 +19,48 @@
             "Identifies": "session"
         }
     },
-      "pheno_age": {
-    "Description": "Age of the participant",
-    "Annotations": {
-      "IsAbout": {
-        "TermURL": "nb:Age",
-        "Label": "Chronological age"
-      },
-      "Transformation": {
-        "TermURL": "nb:euro",
-        "Label": "writing the time with a comma - why not"
-      },
-      "MissingValues": ["NA"]
-    }
-  },
-    "pheno_sex": {
-    "Description": "Sex variable",
-    "Levels": {
-      "M": "Male",
-      "F": "Female"
-    },
-    "Annotations": {
-      "IsAbout": {
-        "TermURL": "nb:Sex",
-        "Label": "Sex"
-      },
-      "Levels": {
-        "M": {
-          "TermURL": "snomed:248153007",
-          "Label": "Male"
-        },
-        "F": {
-          "TermURL": "snomed:248152002",
-          "Label": "Female"
+    "pheno_age": {
+        "Description": "Age of the participant",
+        "Annotations": {
+            "IsAbout": {
+                "TermURL": "nb:Age",
+                "Label": "Chronological age"
+            },
+            "Transformation": {
+                "TermURL": "nb:euro",
+                "Label": "writing the time with a comma - why not"
+            },
+            "MissingValues": [
+                "NA"
+            ]
         }
-      },
-      "MissingValues": ["missing"]
-    }
-  },
-
+    },
+    "pheno_sex": {
+        "Description": "Sex variable",
+        "Levels": {
+            "M": "Male",
+            "F": "Female"
+        },
+        "Annotations": {
+            "IsAbout": {
+                "TermURL": "nb:Sex",
+                "Label": "Sex"
+            },
+            "Levels": {
+                "M": {
+                    "TermURL": "snomed:248153007",
+                    "Label": "Male"
+                },
+                "F": {
+                    "TermURL": "snomed:248152002",
+                    "Label": "Female"
+                }
+            },
+            "MissingValues": [
+                "missing"
+            ]
+        }
+    },
     "pheno_group": {
         "Description": "Group variable",
         "Levels": {
@@ -79,7 +82,9 @@
                     "Label": "Healthy Control"
                 }
             },
-            "MissingValues": ["NA"]
+            "MissingValues": [
+                "NA"
+            ]
         }
     },
     "tool1_item1": {
@@ -93,7 +98,9 @@
                 "TermURL": "cogatlas:1234",
                 "Label": "Imaginary tool"
             },
-            "MissingValues": ["missing"]
+            "MissingValues": [
+                "missing"
+            ]
         }
     },
     "tool1_item2": {
@@ -107,7 +114,9 @@
                 "TermURL": "cogatlas:1234",
                 "Label": "Imaginary tool"
             },
-            "MissingValues": ["missing"]
+            "MissingValues": [
+                "missing"
+            ]
         }
     },
     "tool2_item1": {
@@ -121,7 +130,9 @@
                 "TermURL": "cogatlas:4321",
                 "Label": "A different imaginary tool"
             },
-            "MissingValues": ["not completed"]
+            "MissingValues": [
+                "not completed"
+            ]
         }
     }
 }
