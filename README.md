@@ -1,2 +1,8 @@
-# examples
+# Examples
 Example files using the neurobagel schema
+
+
+| Example                             | Description                                                                                                                                                                                                                                                                                                                                                           |
+|-------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| data-upload/example_synthetic.jsonld            | Sample output of `bagel pheno` command on the `synthetic` example inputs. Contains subject-level annotated phenotypic attributes obtained by essentially applying the data dictionary (.json) to the original tabular data (.tsv).                                                                                                                                    |
+| data-upload/pheno-bids-output/example_synthetic_pheno-bids.jsonld | Sample output of `bagel bids` command on the example_synthetic.jsonld and the [BIDS `synthetic` example dataset directory](https://github.com/bids-standard/bids-examples/tree/master/synthetic). Contains subject-level annotated imaging metadata (extracted directly from the BIDS dataset structure) on top of the subject-level annotated phenotypic attributes. |
