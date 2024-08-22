@@ -12,7 +12,7 @@ git clone https://github.com/neurobagel/recipes.git test_node1/recipes
 # Get the data
 git clone https://github.com/neurobagel/openneuro-annotations.git test_node1/openneuro-annotations
 mkdir test_node1/openneuro_mini_data
-cp test_node1/openneuro-annotations/ds000001.jsonld test_node1/recipes/ds000001.jsonld test_node1/openneuro_mini_data
+cp test_node1/openneuro-annotations/ds000001.jsonld test_node1/recipes/ds000002.jsonld test_node1/openneuro_mini_data
 
 cd test_node1/recipes
 cp template.env .env
