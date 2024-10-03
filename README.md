@@ -1,7 +1,7 @@
 # Examples
 Example inputs and outputs from Neurobagel tools.
 
-## `api-responses`
+## `api-responses/`
 Examples of responses returned by Neurobagel APIs.
 
 ## `data-upload/`
