@@ -51,6 +51,7 @@ cp template.env .env
 sed -i 's|^#\?[[:space:]]\?COMPOSE_PROJECT_NAME=.*|COMPOSE_PROJECT_NAME=neurobagel_node2|' .env
 sed -i 's|^#\?[[:space:]]\?NB_GRAPH_PORT_HOST=.*|NB_GRAPH_PORT_HOST=7201|' .env
 sed -i 's|^#\?[[:space:]]\?NB_NAPI_PORT_HOST=.*|NB_NAPI_PORT_HOST=8001|' .env
+sed -i 's|^#\?[[:space:]]\?NB_RETURN_AGG=.*|NB_RETURN_AGG=false|' .env
 sed -i 's|^#\?[[:space:]]\?COMPOSE_PROFILES=.*|COMPOSE_PROFILES=local_node|' .env
 
 # Generate a full success result (both nodes are running and accessible)
@@ -69,7 +70,7 @@ cd ../..
 
 # Add second n-API to the network of the first node, so that the f-API can access the second n-API by container name
 docker network connect neurobagel_node_default neurobagel_node2-api-1
-curl -s http://localhost:8080/query?sex=snomed:248152002 | jq .  > api-responses/fapi_query_success_207.json
+curl -s http://localhost:8080/query?sex=snomed:248152002 | jq .  > api-responses/fapi_query_success_200.json
 
 
 # Generate query response where results are protected (test node 1)
