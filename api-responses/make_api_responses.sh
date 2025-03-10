@@ -22,10 +22,10 @@ sed -i 's|^#\?[[:space:]]\?LOCAL_GRAPH_DATA=.*|LOCAL_GRAPH_DATA=../openneuro_min
 sed -i 's|^#\?[[:space:]]\?NB_FEDERATE_REMOTE_PUBLIC_NODES=.*|NB_FEDERATE_REMOTE_PUBLIC_NODES=False|' .env
 sed -i 's|^#\?[[:space:]]\?NB_API_QUERY_URL=.*|NB_API_QUERY_URL=http://localhost:8080|' .env
 
-# # Use full container names to avoid conflicts
+# Use full container names to avoid conflicts
 echo '[{"NodeName": "2 OpenNeuro Datasets", "ApiURL": "http://neurobagel_node-api-1:8000"},{"NodeName": "BIDS Synthetic", "ApiURL": "http://neurobagel_node2-api-1:8000"}]' > local_nb_nodes.json
 
-# # Generate a partial success result (since Test node 2 isn't up yet)
+## Generate a partial success result (since Test node 2 isn't up yet)
 docker compose up -d
 
 # WAIT FOR GRAPH TO FINISH BEING SET UP
@@ -38,7 +38,7 @@ cd ../..
 # Run an unfiltered query in the f-API
 curl -s http://localhost:8080/query | jq .  > api-responses/fapi_query_partial_success_207.json
 
-# # Generate a fail result (both nodes are not accessible)
+## Generate a fail result (both nodes are not accessible)
 docker stop neurobagel_node-api-1
 curl -s http://localhost:8080/query | jq .  > api-responses/fapi_query_fail_207.json
 
@@ -54,7 +54,7 @@ sed -i 's|^#\?[[:space:]]\?NB_NAPI_PORT_HOST=.*|NB_NAPI_PORT_HOST=8001|' .env
 sed -i 's|^#\?[[:space:]]\?NB_RETURN_AGG=.*|NB_RETURN_AGG=false|' .env
 sed -i 's|^#\?[[:space:]]\?COMPOSE_PROFILES=.*|COMPOSE_PROFILES=local_node|' .env
 
-# Generate a full success result (both nodes are running and accessible)
+## Generate a full success result (both nodes are running and accessible)
 # First, restart n-API for test node 1
 docker start neurobagel_node-api-1
 
