@@ -28,19 +28,19 @@ echo '[{"NodeName": "2 OpenNeuro Datasets", "ApiURL": "http://neurobagel_node-ap
 # # Generate a partial success result (since Test node 2 isn't up yet)
 docker compose up -d
 
-# WAIT FOR GRAPH TO FINISH BEING SET UP (?)
-while ! curl --silent "localhost:7200/rest/repositories" -u "DBUSER:DBPASSWORD" | grep '\['; do
-    :
+# WAIT FOR GRAPH TO FINISH BEING SET UP
+until [ -f scripts/logs/DEPLOY.log ] && grep -q "Finished setting up the Neurobagel graph backend." scripts/logs/DEPLOY.log; do
+  sleep 1
 done
 
 cd ../..
 
-# Query for female sex in f-API
-curl -s http://localhost:8080/query?sex=snomed:248152002 | jq .  > api-responses/fapi_query_partial_success_207.json
+# Run an unfiltered query in the f-API
+curl -s http://localhost:8080/query | jq .  > api-responses/fapi_query_partial_success_207.json
 
 # # Generate a fail result (both nodes are not accessible)
 docker stop neurobagel_node-api-1
-curl -s http://localhost:8080/query?sex=snomed:248152002 | jq .  > api-responses/fapi_query_fail_207.json
+curl -s http://localhost:8080/query | jq .  > api-responses/fapi_query_fail_207.json
 
 # SETUP FOR TEST NODE 2
 git clone https://github.com/neurobagel/recipes.git test_node2/recipes
@@ -61,19 +61,19 @@ docker start neurobagel_node-api-1
 # Stand up second node
 docker compose up -d
 
-# WAIT FOR GRAPH TO FINISH BEING SET UP (?)
-while ! curl --silent "localhost:7201/rest/repositories" -u "DBUSER:DBPASSWORD" | grep '\['; do
-    :
+# WAIT FOR GRAPH TO FINISH BEING SET UP
+until [ -f scripts/logs/DEPLOY.log ] && grep -q "Finished setting up the Neurobagel graph backend." scripts/logs/DEPLOY.log; do
+  sleep 1
 done
 
 cd ../..
 
 # Add second n-API to the network of the first node, so that the f-API can access the second n-API by container name
 docker network connect neurobagel_node_default neurobagel_node2-api-1
-curl -s http://localhost:8080/query?sex=snomed:248152002 | jq .  > api-responses/fapi_query_success_200.json
+curl -s http://localhost:8080/query | jq .  > api-responses/fapi_query_success_200.json
 
 
 # Generate query response where results are protected (test node 1)
-curl -s http://localhost:8000/query?sex=snomed:248152002 | jq . > api-responses/napi_query_aggregated_results.json
+curl -s http://localhost:8000/query | jq . > api-responses/napi_query_aggregated_results.json
 # Generate query response where results are open (test node 2)
-curl -s http://localhost:8001/query?sex=snomed:248152002 | jq . > api-responses/napi_query_unaggregated_results.json
+curl -s http://localhost:8001/query | jq . > api-responses/napi_query_unaggregated_results.json
