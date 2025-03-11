@@ -72,11 +72,13 @@ jobs:
           # TODO: Remove - debugging
           curl -s http://localhost:8080/query
           curl -s http://localhost:8080/query | jq . > api-responses/fapi_query_partial_success_207.json
-      
+          git status
+
       - name: Generate a fail result
         run: |
           docker stop neurobagel_node-api-1
           curl -s http://localhost:8080/query | jq . > api-responses/fapi_query_fail_207.json
+          git status
 
       - name: Get recipes for Test node 2
         uses: actions/checkout@v4
