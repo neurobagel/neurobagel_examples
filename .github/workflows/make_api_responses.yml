@@ -72,6 +72,8 @@ jobs:
           # TODO: Remove - debugging
           curl -s http://localhost:8080/query
           curl -s http://localhost:8080/query | jq . > api-responses/fapi_query_partial_success_207.json
+          git diff
+          git diff --renormalize
           git status
 
       - name: Generate a fail result
