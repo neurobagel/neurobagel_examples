@@ -71,9 +71,15 @@ jobs:
         run: |
           # TODO: Remove - debugging
           curl -s http://localhost:8080/query
+
+          pwd
+
+          git config --global core.autocrlf true
+
           curl -s http://localhost:8080/query | jq . > api-responses/fapi_query_partial_success_207.json
+
+          cat api-responses/fapi_query_partial_success_207.json
           git diff
-          git diff --renormalize
           git status
 
       - name: Generate a fail result
