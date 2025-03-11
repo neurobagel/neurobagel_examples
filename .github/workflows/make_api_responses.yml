@@ -32,11 +32,16 @@ jobs:
           repository: neurobagel/recipes
           path: test_node1/recipes
 
-      - name: Get data for Test node 1
+      - name: Get data source for Test node 1
         uses: actions/checkout@v4
         with:
           repository: neurobagel/openneuro-annotations
           path: test_node1/openneuro-annotations
+
+      - name: Get data for Test node 1
+        run: |
+          mkdir test_node1/openneuro_mini_data
+          cp test_node1/openneuro-annotations/ds000001.jsonld test_node1/openneuro-annotations/ds000002.jsonld test_node1/openneuro_mini_data
 
       - name: Configure Test node 1
         working-directory: test_node1/recipes
