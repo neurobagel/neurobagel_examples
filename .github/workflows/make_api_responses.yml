@@ -138,8 +138,8 @@ jobs:
           labels: _bot
           delete-branch: true
 
-      - name: Cleanup
-        run: |
-          cd test_node1/recipes && docker compose down && cd ../..
-          cd test_node2/recipes && docker compose down && cd ../..
-          sudo rm -rf test_node1 test_node2
+      # - name: Cleanup
+      #   run: |
+      #     cd test_node1/recipes && docker compose down && cd ../..
+      #     cd test_node2/recipes && docker compose down && cd ../..
+      #     sudo rm -rf test_node1 test_node2
