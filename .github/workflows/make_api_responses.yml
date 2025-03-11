@@ -121,6 +121,8 @@ jobs:
           # Test node 2
           curl -s http://localhost:8001/query | jq . > api-responses/napi_query_unaggregated_results.json
 
+          git status
+
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v7
         with:
@@ -133,7 +135,7 @@ jobs:
 
             Automated changes by [create-pull-request](https://github.com/peter-evans/create-pull-request) GitHub action
           sign-commits: true
-          base: main
+          # base: main
           branch: create-pull-request/update-api-examples
           labels: _bot
           delete-branch: true
