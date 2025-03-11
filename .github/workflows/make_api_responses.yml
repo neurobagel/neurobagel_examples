@@ -1,7 +1,6 @@
 name: Generate example API responses
 
 on:
-  pull_request:
   workflow_dispatch:
 
 jobs:
@@ -20,7 +19,6 @@ jobs:
         uses: actions/checkout@v4
         with:
           token: ${{ steps.generate-token.outputs.token }}
-          ref: main
 
       - name: Create temporary node directories
         run: |
@@ -70,23 +68,12 @@ jobs:
 
       - name: Generate partial success result
         run: |
-          # TODO: Remove - debugging
-          curl -s http://localhost:8080/query
-
           curl -s http://localhost:8080/query | jq . > api-responses/fapi_query_partial_success_207.json
-
-          # TODO: Remove - debugging
-          cat api-responses/fapi_query_partial_success_207.json
-          git diff
-          git status
 
       - name: Generate a fail result
         run: |
           docker stop neurobagel_node-api-1
           curl -s http://localhost:8080/query | jq . > api-responses/fapi_query_fail_207.json
-          
-          # TODO: Remove - debugging
-          git status
 
       - name: Get recipes for Test node 2
         uses: actions/checkout@v4
@@ -131,8 +118,6 @@ jobs:
           # Test node 2
           curl -s http://localhost:8001/query | jq . > api-responses/napi_query_unaggregated_results.json
 
-          git status
-
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v7
         with:
@@ -148,10 +133,9 @@ jobs:
           base: main
           branch: create-pull-request/update-api-examples
           labels: _bot
-          delete-branch: true
 
-      # - name: Cleanup
-      #   run: |
-      #     cd test_node1/recipes && docker compose down && cd ../..
-      #     cd test_node2/recipes && docker compose down && cd ../..
-      #     sudo rm -rf test_node1 test_node2
+      - name: Cleanup
+        run: |
+          cd test_node1/recipes && docker compose down && cd ../..
+          cd test_node2/recipes && docker compose down && cd ../..
+          sudo rm -rf test_node1 test_node2
