@@ -39,8 +39,8 @@ jobs:
           path: test_node1/openneuro-annotations
 
       - name: Configure Test node 1
+        working-directory: test_node1/recipes
         run: |
-          cd test_node1/recipes
           cp template.env .env
 
           # Set environment variables
@@ -53,6 +53,7 @@ jobs:
           echo '[{"NodeName": "2 OpenNeuro Datasets", "ApiURL": "http://neurobagel_node-api-1:8000"},{"NodeName": "BIDS Synthetic", "ApiURL": "http://neurobagel_node2-api-1:8000"}]' > local_nb_nodes.json
 
       - name: Launch Test node 1
+        working-directory: test_node1/recipes
         run: |
           docker compose up -d
 
@@ -61,8 +62,6 @@ jobs:
             sleep 1
           done
 
-          cd ../..
-      
       - name: Generate partial success result
         run: |
           curl -s http://localhost:8080/query | jq .  > api-responses/fapi_query_partial_success_207.json
@@ -79,8 +78,8 @@ jobs:
           path: test_node2/recipes
 
       - name: Configure Test node 2
+        working-directory: test_node2/recipes
         run: |
-          cd test_node2/recipes
           cp template.env .env
 
           # Set environment variables
@@ -91,6 +90,7 @@ jobs:
           sed -i 's|^#\?[[:space:]]\?COMPOSE_PROFILES=.*|COMPOSE_PROFILES=local_node|' .env
         
       - name: Launch both nodes
+        working-directory: test_node2/recipes
         run: |
           docker start neurobagel_node-api-1
           docker compose up -d
@@ -102,8 +102,6 @@ jobs:
 
           # Add second n-API to the network of the first node, so that the f-API can access the second n-API by container name
           docker network connect neurobagel_node_default neurobagel_node2-api-1
-
-          cd ../..
       
       - name: Generate full success result
         run: |
