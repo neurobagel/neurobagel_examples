@@ -5,7 +5,8 @@
             "IsAbout": {
                 "TermURL": "nb:ParticipantID",
                 "Label": "Subject Unique Identifier"
-            }
+            },
+            "VariableType": "Identifier"
         }
     },
     "session_id": {
@@ -14,7 +15,8 @@
             "IsAbout": {
                 "TermURL": "nb:SessionID",
                 "Label": "Unique session identifier"
-            }
+            },
+            "VariableType": "Identifier"
         }
     },
     "pheno_age": {
@@ -30,7 +32,8 @@
             },
             "MissingValues": [
                 "NA"
-            ]
+            ],
+            "VariableType": "Continuous"
         }
     },
     "pheno_sex": {
@@ -56,7 +59,8 @@
             },
             "MissingValues": [
                 "missing"
-            ]
+            ],
+            "VariableType": "Categorical"
         }
     },
     "pheno_group": {
@@ -82,7 +86,8 @@
             },
             "MissingValues": [
                 "NA"
-            ]
+            ],
+            "VariableType": "Categorical"
         }
     },
     "tool1_item1": {
@@ -98,7 +103,8 @@
             },
             "MissingValues": [
                 "missing"
-            ]
+            ],
+            "VariableType": "Collection"
         }
     },
     "tool1_item2": {
@@ -114,7 +120,8 @@
             },
             "MissingValues": [
                 "missing"
-            ]
+            ],
+            "VariableType": "Collection"
         }
     },
     "tool2_item1": {
@@ -130,7 +137,8 @@
             },
             "MissingValues": [
                 "not completed"
-            ]
+            ],
+            "VariableType": "Collection"
         }
     }
 }
