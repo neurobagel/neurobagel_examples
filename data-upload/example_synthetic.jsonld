@@ -94,7 +94,7 @@
     "SubjectGroup": "nb:SubjectGroup"
   },
   "identifier": "nb:81b969c4-64a1-45dd-be65-aee0cb30c056",
-  "hasLabel": "Synthetic dataset for inclusion in BIDS-examples",
+  "hasLabel": "BIDS synthetic",
   "hasAuthors": [
     "Markiewicz, C. J.",
     "Gau, Rémi"
