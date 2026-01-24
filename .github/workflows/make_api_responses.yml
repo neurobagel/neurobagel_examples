@@ -120,7 +120,7 @@ jobs:
           curl -s -X POST http://localhost:8080/subjects -H "Content-Type: application/json" -d '{}' \
             | jq . > api-responses/fapi_post_subjects_success_200.json
 
-      - name: Generate POST /datasets and POST /subjects with counts vs records results from n-API
+      - name: Generate n-API results with counts and records from POST /datasets and /subjects
         run: |
           # Test node 1
           curl -s -X POST http://localhost:8000/subjects -H "Content-Type: application/json" -d '{}' \
