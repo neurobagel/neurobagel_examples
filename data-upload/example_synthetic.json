@@ -91,7 +91,7 @@
         }
     },
     "moca_attention": {
-        "Description": "Attention score for Montreal Cognitive Assessment",
+        "Description": "Montreal Cognitive Assessment - attention score",
         "Annotations": {
             "IsAbout": {
                 "TermURL": "nb:Assessment",
@@ -108,7 +108,7 @@
         }
     },
     "moca_delayed_recall": {
-        "Description": "Delayed recall score for Montreal Cognitive Assessment",
+        "Description": "Montreal Cognitive Assessment - delayed recall score",
         "Annotations": {
             "IsAbout": {
                 "TermURL": "nb:Assessment",
@@ -125,7 +125,7 @@
         }
     },
     "updrs_total": {
-        "Description": "Total score on the MDS-UPDRS",
+        "Description": "MDS-UPDRS - total score",
         "Annotations": {
             "IsAbout": {
                 "TermURL": "nb:Assessment",
